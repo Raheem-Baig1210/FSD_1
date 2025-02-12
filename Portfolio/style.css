@@ -155,12 +155,13 @@ a{
     height: 32vw;
     /* background: red; */
     border-radius: 50%;
-    padding: 5px;
+    /* padding: 5px; */
     display: flex;
     justify-content: center;
     align-items: center;
     /* box-shadow:0 0 50000px  #7cf03d; */
     transition: 0.5s ease;
+    overflow: hidden;
 }
 .home-img .img:hover{
     box-shadow:0 0 50px  #7cf03d;
@@ -174,7 +175,8 @@ a{
     background: conic-gradient(transparent, transparent,transition, #7cf03d);
 }
 .home-img .img .img-item{
-    position: relative;
+    position: absolute;
+    /* margin-top: 90px; */
     width: 100%;
     height: 100%;
     /* background: slateblue; */

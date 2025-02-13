@@ -1,17 +1,17 @@
 function bill(){
-    var units=40;
+    var units=260;
     var below_fif=50*2.5;
     var below_hun=50*4;
     var below_200=100*6;
     if (units <= 200){
-        if (units <=100 && units >50){
+        if(units <=50 && units >=0){
+            var bill=units*2.5
+            return bill
+        }else if(units <=100 && units >50){
             // var a=fif();
             var c=units-50;
             var bill=c * 4;
             bill=bill+below_fif;
-            return bill
-        }else if(units <=50){
-            var bill=units*2.5
             return bill
         }else{
             // var a=hun();

@@ -11,4 +11,4 @@ function balance(withdrawal, available_balance){
         return available_balance
     }
 }
-console.log(balance(1500 , 2000));
+console.log(balance(1900 , 2000));

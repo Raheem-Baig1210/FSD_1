@@ -51,14 +51,14 @@ function BankAccount() {
   }
   function transfer(user1, user2, amt) {
     if (arr.includes(user1) && arr.includes(user2)) {
-      if (user1.Avlbal > amt) {
+      if (user1.Avlbal-1000 > amt) {
         user1.Avlbal = user1.Avlbal - amt;
         user2.Avlbal = user2.Avlbal + amt;
-        console.log("Amount Transfer Successfull ..!!!");
+        console.log("Amount Transfer Successfull ...!!!");
         console.log("Avalable balance in", user1.name, " is ", user1.Avlbal);
         console.log("Avalable balance in", user2.name, " is ", user2.Avlbal);
       } else {
-        console.log("Insufficiant amount in user1 ....!!!!");
+        console.log("Insufficiant amount in user1 or going beyond the minimum balance...!!!!");
       }
     } else {
       console.log("Invalid Users ... Please recheck the users again....!!!!");
@@ -86,9 +86,7 @@ function BankAccount() {
         chk = true;
         console.log(value);
       } else if (value == arr.at(-1) && chk == false) {
-        throw new Error(
-          "Invalid account number... Please enter the account number again ....!!!"
-        );
+        throw new Error("Invalid account number... Please enter the account number again ....!!!");
         // console.log("Invalid Account number... Please check account number again ...!!!")
       }
     });
@@ -96,9 +94,9 @@ function BankAccount() {
   console.log(arr);
   // deposit(arr[0],300);
   // withdrawal(arr[2],200);
-  // transfer(arr[0],arr[2],1300);
-  var a= new New_Account("Safi","IN1234587890",2000)
-  arr.push(a)
+  transfer(arr[0],arr[2],1300);
+  // var a= new New_Account("Safi","IN1234587890",2000)
+  // arr.push(a)
   // Acc_Details("IN1234587890")
   console.log(arr);
 }

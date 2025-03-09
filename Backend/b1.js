@@ -40,20 +40,16 @@ const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.write("Welcome to my Server!");
   } else if (req.url.includes("books")) {
-
-    // res.statusCode = 200;
-    // res.write(req.url)
-    // res.write(JSON.stringify(books));
     let a=false
-    books.forEach((val)=>{
-      var b=val.id.toString()
-      // b=b.toString()
-      // console.log(b)
-      if(req.url.includes(b)){
-        res.statusCode = 200;
-        res.write(JSON.stringify(val));
-        a=true
-      }
+    books.forEach((val,ind)=>{
+      var b=val.id
+      sss=req.url.toString()
+      let lastPart = sss.split("/").pop();
+      if(lastPart==b){
+          res.statusCode = 200;
+          res.write(JSON.stringify(books[ind]));
+          a=true
+        }
     })
     if(a!=true){
       res.statusCode = 404;

@@ -35,25 +35,32 @@ let books = [
 ];
 
 const server = http.createServer((req, res) => {
-  console.log(req.url);
+  // console.log(req.url);
   if (req.url.includes("welcome")) {
     res.statusCode = 200;
     res.write("Welcome to my Server!");
   } else if (req.url.includes("books")) {
     let a=false
-    books.forEach((val,ind)=>{
-      var b=val.id
-      sss=req.url.toString()
-      let lastPart = sss.split("/").pop();
-      if(lastPart==b){
-          res.statusCode = 200;
-          res.write(JSON.stringify(books[ind]));
-          a=true
-        }
-    })
+    sss=req.url.toString()
+    let f=req.url.split("/")
+    let lastPart = sss.split("/").pop();
+    if (f.length>=2){
+      books.forEach((val,ind)=>{
+        var b=val.id
+        if(lastPart==b){
+            res.statusCode = 200;
+            res.write(JSON.stringify(books[ind]));
+            a=true
+          }
+      })
+      // res.write(JSON.stringify(books))
+    }else if(lastPart=='' || f.length>=lastPart.toNumber()){
+      res.statusCode=200;
+      res.write("Book not found!");
+    }
     if(a!=true){
-      res.statusCode = 404;
-      res.write("Request not found!");
+      res.statusCode = 200;
+      res.write(JSON.stringify(books))
     }
   } else {
     res.statusCode = 404;
